@@ -1,3 +1,11 @@
+### Dependencies
+
+Projects programmed in Python 3.8.0, utilises Pygame for animations.
+
+```
+pip install pygame
+```
+
 ## Double Pendulum
 
 ![Chaotic behaviour of a Double Pendulum](/doublependulum/demo.png)
