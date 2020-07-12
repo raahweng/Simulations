@@ -2,25 +2,24 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
-h = 0.001
+k = 2
+b = 2
+n = 2
+h = 0.01
+l = 1
+
 
 fig, ax = plt.subplots()
-x = np.arange(0, 1, h)
-line, = ax.plot(x, (4/np.pi) * np.sin(2*np.pi*x))
+x = np.arange(0, l, h)
+line, = ax.plot(x, b*np.sin(n*np.pi*x/l))
 
 def init():  
     line.set_ydata([np.nan] * len(x))
     return line,
 
-def square(n):
-    y  = np.zeros(int(1/h))
-    for i in range(1,n+2,2):
-        y += (4/(i*np.pi)) * np.sin(2*np.pi*i*x)
-    return y
-
 def animate(i):
-    n = 2*i+3
-    line.set_ydata(square(n))  
+    t = i * 0.0001
+    line.set_ydata(b*np.sin(n*np.pi*x/l)*np.exp(-k*t*(n*np.pi/l)**2))  
     return line,
 
 ani = animation.FuncAnimation(
