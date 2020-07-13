@@ -4,22 +4,22 @@ import matplotlib.animation as animation
 import scipy.integrate, scipy.optimize
 
 #Stuff to change
-bounds = [0,6*np.pi]
+bounds = [0,10]
 def f(t):
     return np.exp(t)
-interval = 10
+interval = 20
 showhistory = False
 
 def a(n):
-    return 2/p * scipy.integrate.quad(lambda t: f(t)*np.cos(2*np.pi*t*(n/p)), bounds[0], bounds[1], args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit=10000)[0]
+    return (2/p) * scipy.integrate.quad(lambda t: f(t)*np.cos(2*np.pi*t*(n/p)), bounds[0], bounds[1], args=(), full_output=0, epsabs=1.49e-10, epsrel=1.49e-10, limit=10000)[0]
 
 def b(n):
-    return 2/p * scipy.integrate.quad(lambda t: f(t)*np.sin(2*np.pi*t*(n/p)), bounds[0], bounds[1], args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit=10000)[0]
+    return (2/p) * scipy.integrate.quad(lambda t: f(t)*np.sin(2*np.pi*t*(n/p)), bounds[0], bounds[1], args=(), full_output=0, epsabs=1.49e-10, epsrel=1.49e-10, limit=10000)[0]
     
 def fourier(n):
     return a(n)*np.cos((2*np.pi*n*x)/p) + b(n)*np.sin((2*np.pi*n*x)/p)
 
-h = 0.001
+h = 0.0001
 p = bounds[1]-bounds[0]
 fig, ax = plt.subplots()
 x = np.arange(bounds[0], bounds[1], h)
@@ -34,7 +34,6 @@ def animate(i):
     global y
     y += fourier(i+1)
     line.set_ydata(y)
-    plt.ylim(np.amin(y)-0.5, np.amax(y)+0.5)
     if showhistory:
         plt.plot(x,y)
     return line,
