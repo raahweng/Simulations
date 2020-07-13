@@ -4,20 +4,21 @@ import matplotlib.animation as animation
 import scipy.integrate, scipy.optimize
 
 #Stuff to change
-bounds = [0,10]
+bounds = [0,2*np.pi]
 def f(t):
-    return np.exp(t)
-interval = 20
+    return abs(np.sin(t))
+interval = 50
 showhistory = False
 
 def a(n):
-    return (2/p) * scipy.integrate.quad(lambda t: f(t)*np.cos(2*np.pi*t*(n/p)), bounds[0], bounds[1], args=(), full_output=0, epsabs=1.49e-10, epsrel=1.49e-10, limit=10000)[0]
+    return (2/p) * scipy.integrate.quad(lambda t: f(t)*np.cos(2*np.pi*t*(n/p)), bounds[0], bounds[1], args=(), full_output=0, epsabs=1.49e-8, epsrel=1.49e-8, limit=10000)[0]
 
 def b(n):
-    return (2/p) * scipy.integrate.quad(lambda t: f(t)*np.sin(2*np.pi*t*(n/p)), bounds[0], bounds[1], args=(), full_output=0, epsabs=1.49e-10, epsrel=1.49e-10, limit=10000)[0]
+    return (2/p) * scipy.integrate.quad(lambda t: f(t)*np.sin(2*np.pi*t*(n/p)), bounds[0], bounds[1], args=(), full_output=0, epsabs=1.49e-8, epsrel=1.49e-8, limit=10000)[0]
     
 def fourier(n):
-    return a(n)*np.cos((2*np.pi*n*x)/p) + b(n)*np.sin((2*np.pi*n*x)/p)
+    return a(n)*np.cos((2*np.pi*n*x)/p) + b(n)*np.sin((2*np.pi*n*x)/p
+                                                      )
 
 h = 0.0001
 p = bounds[1]-bounds[0]
