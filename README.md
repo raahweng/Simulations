@@ -12,6 +12,12 @@ pip install pygame
 
 Implementation of Double Pendulum differential equations using the Runge-Kutta 4th order method.
 
+## Heat Equation
+
+![f(x) = x*sin(x) from [0,10pi](/heatequation/demo.png)
+
+Solution of the Heat Equation in a 1-d bar using Fourier Series.
+
 ## N-body solvers
 
 ![Realistic Solar System model :P](/nbody/demo.png)
