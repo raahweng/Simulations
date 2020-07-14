@@ -5,7 +5,7 @@ import scipy.integrate
 import pygame
 
 #Stuff to change
-l = 8*np.pi
+l = 10*np.pi
 def f(t):
     return t*np.sin(t)
 k = 0.5
