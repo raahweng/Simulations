@@ -14,7 +14,7 @@ Implementation of Double Pendulum differential equations using the Runge-Kutta 4
 
 ## Heat Equation
 
-![f(x) = xsin(x) from [0,10pi](/heatequation/demo.png)
+![f(x) = xsin(x) from [0,10pi]](/heatequation/demo.png)
 
 Solution of the Heat Equation in a 1-d bar using Fourier Series.
 
