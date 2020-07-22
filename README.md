@@ -18,6 +18,12 @@ Implementation of Double Pendulum differential equations using the Runge-Kutta 4
 
 Solution of the Heat Equation in a 1-d bar using Fourier Series.
 
+## Lorenz Attractor
+
+![Chaotic behaviour of a = 10, 10.1](/lorenz/demo.png)
+
+Demonstration of the chaotic behaviour of the Lorenz Attractor using the Runge-Kutta 4th order method.
+
 ## N-body solvers
 
 ![Realistic Solar System model :P](/nbody/demo.png)
