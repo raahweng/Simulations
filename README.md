@@ -12,6 +12,12 @@ pip install pygame
 
 Implementation of Double Pendulum differential equations using the Runge-Kutta 4th order method.
 
+## Fourier Series
+
+![Fourier Series of a Square Wave](/fourier/demo.png)
+
+Fourier Series generator; used in Heat Equation solver
+
 ## Heat Equation
 
 ![f(x) = xsin(x) from [0,10pi]](/heatequation/demo.png)
