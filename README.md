@@ -3,7 +3,7 @@
 Projects programmed in Python 3.8.0, utilises Pygame for animations.
 
 ```
-pip install pygame
+pip install numpy, matplotlib, pygame
 ```
 
 ## Double Pendulum
