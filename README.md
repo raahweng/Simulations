@@ -24,7 +24,7 @@ Solution of the Heat Equation in a 1-d bar using Fourier Series.
 
 Demonstration of the chaotic behaviour of the Lorenz Attractor using the Runge-Kutta 4th order method.
 
-## N-body solvers
+## Orbital solvers
 
 ![Realistic Solar System model :P](/nbody/demo.png)
 
