@@ -12,6 +12,12 @@ pip install pygame
 
 Implementation of Double Pendulum differential equations using the Runge-Kutta 4th order method.
 
+## Fourier Series
+
+![Fourier Series of a Square Wave](/fourier/demo.png)
+
+Fourier Series generator; used in Heat Equation solver
+
 ## Heat Equation
 
 ![f(x) = xsin(x) from [0,10pi]](/heatequation/demo.png)
@@ -24,7 +30,7 @@ Solution of the Heat Equation in a 1-d bar using Fourier Series.
 
 Demonstration of the chaotic behaviour of the Lorenz Attractor using the Runge-Kutta 4th order method.
 
-## N-body solvers
+## Orbital solvers
 
 ![Realistic Solar System model :P](/nbody/demo.png)
 
