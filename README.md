@@ -16,7 +16,7 @@ Implementation of Double Pendulum differential equations using the Runge-Kutta 4
 
 ![Fourier Series of a Square Wave](/fourier/demo.png)
 
-Fourier Series generator; used in Heat Equation solver
+Fourier Series generator; used in Heat Equation solver.
 
 ## Heat Equation
 
@@ -34,4 +34,4 @@ Demonstration of the chaotic behaviour of the Lorenz Attractor using the Runge-K
 
 ![Realistic Solar System model :P](/nbody/demo.png)
 
-Simulation of N-body problems using Newton's law of Gravitation and the Forward Euler method.
+Simulation of N-body problems using Newton's law of Gravitation.
