@@ -50,6 +50,7 @@ fig = plt.figure()
 ax = fig.gca(projection='3d')
 ax.plot(hist[:,0], hist[:,1], hist[:,2])
 
+a=10.1
 x,y,z = 1,1,1
 hist = np.zeros((10000,3))
 for i in range(10000):
