@@ -57,6 +57,9 @@ def boundary():
     #p[0:int(nx/2), int(ny/2)] = p[0:int(nx/2), int(ny/2)+1]
 
 
+    
+
+
 
 def update_vel(un, vn, pn):
     
@@ -104,7 +107,6 @@ def update():
 
 def animate(i):
     plt.cla()
-    update()
     update()
     plt.contourf(X, Y, p, alpha=0.5, cmap=cm.viridis)  
     plt.contour(X, Y, p, cmap=cm.viridis)  
