@@ -7,8 +7,8 @@ nx = 200
 ny = 100
 dx = 2/(nx-1)
 dy = 2/(ny-1)
-rho = 0.1 #Density
-nu = 1e-2 #Kinematic Viscosity
+rho = 1 #Density
+nu = 1e-2#Kinematic Viscosity
 dt = 0.001
 x = np.linspace(0,2,nx)
 y = np.linspace(0,1,ny)
@@ -25,17 +25,17 @@ def boundary():
     
     p[-1,:] = p[-2,:]
     p[0,:] = p[1,:]
-    p[:,0] = 0
+    #p[:,0] = 0
 
     u[:,0] = 1
-##    u[-1,:] = 0
-##    v[-1,:] = 0
-##    u[0,:] = 0
-##    v[-1,:] = 0
-    u[-1,:] = -u[-2,:]
-    v[-1,:] = -v[-2,:]
-    u[0,:] = -u[1,:]
-    v[-1,:] = -v[-2,:]
+    u[-1,:] = 0
+    v[-1,:] = 0
+    u[0,:] = 0
+    v[0,:] = 0
+##    u[-1,:] = -u[-2,:]
+##    v[-1,:] = -v[-2,:]
+##    u[0,:] = -u[1,:]
+##    v[-1,:] = -v[-2,:]
 
     u[int(ny/4):int(3*ny/4), int(1*nx/5):int(2*nx/5)] = 0
 ##    p[int(ny/4), int(1*nx/5):int(2*nx/5)] = p[int(ny/4)-1, int(1*nx/5):int(2*nx/5)]
@@ -83,7 +83,7 @@ def update_vel(un, vn, pn):
 
 def update_p(un,vn,pn):
     
-    for i in range(200):
+    for i in range(50):
         
         p[1:-1,1:-1] = ((dy**2)*(pn[1:-1,2:nx]+pn[1:-1,0:-2]) + (dx**2)*(pn[2:ny,1:-1]+pn[0:-2,1:-1])) / (2*(dx**2 + dy**2)) \
             - (rho*(dx**2)*(dy**2))/(2*(dx**2+dy**2)) \
@@ -113,7 +113,9 @@ def animate(i):
     plt.quiver(X[::2, ::2], Y[::2, ::2], u[::2, ::2], v[::2, ::2])
 
 boundary()
-
+##for i in range(20):
+##    update()
+##    print(i)
 
 fig = plt.figure(figsize=(15,5), dpi=100)
 plt.contourf(X, Y, p, alpha=0.5, cmap=cm.viridis)  
