@@ -7,12 +7,11 @@ from scipy.ndimage import map_coordinates
 from scipy.interpolate import griddata
 from matplotlib import cm
 
-nx = 200
-ny = 200
+nx = 400
+ny = 100
 dx = 1/(nx-1)
 dy = 1/(ny-1)
-rho = 0.001 #Density
-nu = 1e-2#Kinematic Viscosity
+nu = 1e-5#Kinematic Viscosity
 dt = 0.1
 x = np.linspace(0,nx-1,nx)
 y = np.linspace(0,ny-1,ny)
@@ -20,27 +19,35 @@ X,Y = np.meshgrid(x,y)
 grid = np.dstack((Y,X))
 u = np.zeros((ny,nx)) #X velocity
 v = np.zeros((ny,nx)) #Y velocity
-u[0:int(ny/4),:int(nx/2)] = 10
 p = np.zeros((ny,nx)) #Pressure
 divuv = np.zeros((ny,nx))
+u[0:int(ny/4),:int(nx/2)] = 10
 
 def boundary(x):
-    x[0, 1:-1] = -x[1, 1:-1]
-    x[-1, 1:-1] = -x[-2, 1:-1]
-    x[1:-1,  0] = -x[1:-1, 1]
-    x[1:-1, -1] = -x[1:-1, -2]
-    x[ 0,  0] = 0.5 * (x[1,  0] + x[ 0, 1])
-    x[ 0, -1] = 0.5 * (x[1, -1] + x[ 0, -2])
-    x[-1,  0] = 0.5 * (x[-2,  0] + x[-1, 1])
-    x[-1, -1] = 0.5 * (x[-2, -1] + x[-1, -2])
+
+##    x[0, 1:-1] = -x[1, 1:-1]
+##    x[-1, 1:-1] = -x[-2, 1:-1]
+##    x[1:-1,  0] = -x[1:-1, 1]
+##    x[1:-1, -1] = -x[1:-1, -2]
+##    x[ 0,  0] = 0.5 * (x[1,  0] + x[ 0, 1])
+##    x[ 0, -1] = 0.5 * (x[1, -1] + x[ 0, -2])
+##    x[-1,  0] = 0.5 * (x[-2,  0] + x[-1, 1])
+##    x[-1, -1] = 0.5 * (x[-2, -1] + x[-1, -2])
+
+    u[int(ny/4):int(3*ny/4), int(1*nx/5):int(2*nx/5)] = 0
+    x[int(ny/4), int(1*nx/5):int(2*nx/5)] = -x[int(ny/4)-1, int(1*nx/5):int(2*nx/5)]
+    x[int(3*ny/4), int(1*nx/5):int(2*nx/5)] = -x[int(3*ny/4)+1, int(1*nx/5):int(2*nx/5)]
+    x[int(ny/4):int(3*ny/4), int(1*nx/5)] = -x[int(ny/4):int(3*ny/4), int(1*nx/5)-1]
+    x[int(ny/4):int(3*ny/4), int(2*nx/5)] = -x[int(ny/4):int(3*ny/4), int(2*nx/5)+1]
+    pass
     
+
     
 def advection(un,vn):
     global u,v
 
     tempvel = np.dstack((vn,un)).reshape(nx*ny,2)
-    velreverse = np.transpose(grid.reshape(nx*ny,2) - tempvel*dt) # dx
-    #print(velreverse[50,0,:])
+    velreverse = np.transpose(grid.reshape(nx*ny,2) - tempvel*dt)
     u = map_coordinates(tempvel[:,1].reshape((ny,nx)), velreverse, order=2).reshape((ny,nx))
     v = map_coordinates(tempvel[:,0].reshape((ny,nx)), velreverse, order=2).reshape((ny,nx))
     boundary(u)
@@ -71,6 +78,7 @@ def pressure(un,vn,pn):
 #divergence in v direction *-1 as axes are the wrong way round
     divuv[1:-1,1:-1] = (un[1:-1,2:nx] - un[1:-1,0:-2])/(2*dx) + (vn[2:ny,1:-1] - vn[0:-2,1:-1])/(2*dy)
     boundary(divuv)
+    print(divuv)
     p[1:-1, 1:-1] = 0
     for i in range(50):
         p[1:-1,1:-1] = (pn[1:-1,2:nx] + pn[1:-1,0:-2] + pn[2:ny,1:-1] + pn[0:-2,1:-1] + (-dx*dy)*divuv[1:-1,1:-1])/4
@@ -96,10 +104,10 @@ def animate(i):
     update()
     plt.contourf(X, Y, p, alpha=0.5, cmap=cm.viridis)  
     plt.contour(X, Y, p, cmap=cm.viridis)  
-    plt.quiver(X[::2, ::2], Y[::2, ::2], u[::2, ::2], v[::2, ::2])
+    plt.quiver(X[::3, ::3], Y[::3, ::3], u[::3, ::3], v[::3, ::3])
 
 
-fig = plt.figure(figsize=(7,7), dpi=100)
+fig = plt.figure(figsize=(10,5), dpi=100)
 plt.contourf(X, Y, p, alpha=0.5, cmap=cm.viridis)  
 plt.contour(X, Y, p, cmap=cm.viridis)  
 plt.quiver(X[::2, ::2], Y[::2, ::2], u[::2, ::2], v[::2, ::2])
@@ -107,13 +115,13 @@ plt.colorbar()
 ani = animation.FuncAnimation(fig, animate, interval=1)
 plt.show()
 
-print("Generating stream plot...")
-fig = plt.figure(figsize=(7, 7), dpi=100)
-plt.contourf(X, Y, p, alpha=0.5, cmap=cm.viridis)
-plt.colorbar()
-plt.contour(X, Y, p, cmap=cm.viridis)
-plt.streamplot(X, Y, u, v, density=2, arrowsize=0.75, minlength = 0.001, maxlength = 10)
-plt.show()
+##print("Generating stream plot...")
+##fig = plt.figure(figsize=(7, 7), dpi=100)
+##plt.contourf(X, Y, p, alpha=0.5, cmap=cm.viridis)
+##plt.colorbar()
+##plt.contour(X, Y, p, cmap=cm.viridis)
+##plt.streamplot(X, Y, u, v, density=2, arrowsize=0.75, minlength = 0.001, maxlength = 10)
+##plt.show()
 
 
 def show():
@@ -121,5 +129,6 @@ def show():
     plt.contour(X, Y, p, cmap=cm.viridis) 
     plt.quiver(X[::2, ::2], Y[::2, ::2], u[::2, ::2], v[::2, ::2])
     plt.show()
+
 
 
