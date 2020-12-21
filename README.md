@@ -1,6 +1,6 @@
 ### Dependencies
 
-Projects programmed in Python 3.8.0, utilises Matplotlib and Pygame for animations.
+Projects programmed in Python 3.8.0, uses Matplotlib and Pygame for animations.
 
 ```
 pip install numpy, matplotlib, pygame
