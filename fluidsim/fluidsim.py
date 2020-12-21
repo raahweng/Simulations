@@ -12,11 +12,11 @@ from matplotlib import cm
 #Real-time simulation if true, else generate MP3
 realtime = True
 
-nx = 400
-ny = 200
+nx = 250
+ny = 125
 dx = 1/(nx-1)
 dy = 1/(ny-1)
-nu = 5e-6 #Kinematic Viscosity
+nu = 1e-4 #Kinematic Viscosity
 dt = 0.01 #Timestep
 x = np.linspace(0,nx-1,nx)
 y = np.linspace(0,ny-1,ny)
@@ -105,8 +105,8 @@ def update():
     
     for i in range(10):
         
-        u[:,0:3] += 60
-        d[int(3*ny/7):int(4*ny/7), 1] += 1
+        u[:,0:3] += 60 #60
+        d[int(3*ny/7):int(4*ny/7), 1] += 1 #1
         
         advection(u,v,d)
         pressure(u,v,p)
