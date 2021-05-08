@@ -66,7 +66,7 @@ Simulation of N-body problems using Newton's law of Gravitation.
 
 Interactive numerical solution of the Wave Equation using the Finite Difference method.
 
-## Zeta zeroes and Prime number distribution
+## Zeta zeroes and the Prime number distribution
 
 ![Approximation of Chebyshev function](/zetaprimes/demo.png)
 
