@@ -28,7 +28,7 @@ Implementation of Discrete Fourier Transforms to generate Epicycle drawings.
 
 ![700x350, nu=9e-6](/fluidsim/demo.png)
 
-Solution of the Navier Stokes Equations using the Finite Difference method and the Semi-Lagrangian method.
+Numerical solution of the Navier Stokes Equation using the Finite Difference method and the Semi-Lagrangian method.
 
 ## Fourier Series
 
@@ -42,6 +42,12 @@ Fourier Series generator; used in Heat Equation solver.
 
 Solution of the Heat Equation in a 1-d bar using Fourier Series.
 
+## Image Filters
+
+![Swirl and Droste effects](/imagefilters/demo.png)
+
+Implementation of the Swirl and Droste effects.
+
 ## Lorenz Attractor
 
 ![Chaotic behaviour of a = 10, 10.1](/lorenz/demo.png)
@@ -53,3 +59,15 @@ Demonstration of the chaotic behaviour of the Lorenz Attractor using the Runge-K
 ![Realistic Solar System model :P](/nbody/demo.png)
 
 Simulation of N-body problems using Newton's law of Gravitation.
+
+## Wave Equation
+
+![Interference of two waves; Shockwave simulation](/waveeq/demo.png)
+
+Interactive numerical solution of the Wave Equation using the Finite Difference method.
+
+## Zeta zeroes and Prime number distribution
+
+![Approximation of Chebyshev function](/zetaprimes/demo.png)
+
+Approximations of Prime Counting Functions using the zeroes of the Riemann Zeta Function.
