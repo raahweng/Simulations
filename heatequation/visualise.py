@@ -11,9 +11,8 @@ def f(t):
 k = 0.5
 boundary = "neumann"
 fourier_n = 100
-timestep = 0.1
-h = 0.01
-interval = 1
+timestep = 0.005
+h = 0.005
 
 def c(n):
     if boundary == "dirichlet":
@@ -43,7 +42,7 @@ black = (0,0,0)
 running = True
 t = 0
 
-x = np.arange(0, l, h)
+x = np.linspace(0, l, int(1/h))
 tempbound = (np.amin(heat(0)), np.amax(heat(0)))
 
 def colour(n):
@@ -53,6 +52,7 @@ def colour(n):
     elif c >= 155:
         return (255,410-c,410-c)
 
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -60,7 +60,7 @@ while running:
     disp.fill(white)
     pygame.draw.rect(disp, black, (93,145,812,110))
     for i,j in enumerate(heat(t)):
-        pygame.draw.rect(disp, colour(j), (100+i/int(l/h)*800, 150, 1/int(l/h), 100))
+        pygame.draw.rect(disp, (colour(j)), (100+i*800*h, 150, 800*h, 100))
     pygame.display.update()
     t += timestep
     

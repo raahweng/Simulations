@@ -10,13 +10,13 @@ from scipy.interpolate import griddata
 from matplotlib import cm
 
 #Real-time simulation if true, else generate MP3
-realtime = True
+realtime = False
 
-nx = 250
-ny = 125
+nx = 800
+ny = 400
 dx = 1/(nx-1)
 dy = 1/(ny-1)
-nu = 1e-4 #Kinematic Viscosity
+nu = 9e-6 #Kinematic Viscosity
 dt = 0.01 #Timestep
 x = np.linspace(0,nx-1,nx)
 y = np.linspace(0,ny-1,ny)
@@ -162,7 +162,7 @@ else:
     dye = plt.imshow(d, cmap='Greys', vmax=1, interpolation='bilinear')
     plt.quiver(X[::8, ::8], Y[::8, ::8], u[::8, ::8], v[::8, ::8])
     writer = animation.FFMpegWriter() 
-    ani = animation.FuncAnimation(fig, animate, 100, interval = 0.001, repeat = False)
+    ani = animation.FuncAnimation(fig, animate, 1000, interval = 0.001, repeat = False)
     ani.save("test.mp4", fps = 15)
     quit()
 
