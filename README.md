@@ -1,16 +1,34 @@
 ### Dependencies
 
-Projects programmed in Python 3.8.0, utilises Pygame for animations.
+Projects programmed in Python 3.8.0, uses Matplotlib and Pygame for animations.
 
 ```
 pip install numpy, matplotlib, pygame
 ```
+
+## 12 Steps to Navier-Stokes
+
+![2D Burgers' Equation using the Finite Difference Method](/12stepstonavierstokes/demo.png)
+
+Implementation and visualisation of programs in CFD Python: 12 steps to Navier-Stokes https://lorenabarba.com/blog/cfd-python-12-steps-to-navier-stokes/
 
 ## Double Pendulum
 
 ![Chaotic behaviour of a Double Pendulum](/doublependulum/demo.png)
 
 Implementation of Double Pendulum differential equations using the Runge-Kutta 4th order method.
+
+## Drawing with Epicycles
+
+![Pi drawing using a DFT n = 500](/epicycles/demo.png)
+
+Implementation of Discrete Fourier Transforms to generate Epicycle drawings.
+
+## Fluid Simulation
+
+![700x350, nu=9e-6](/fluidsim/demo.png)
+
+Solution of the Navier Stokes Equations using the Finite Difference method and the Semi-Lagrangian method.
 
 ## Fourier Series
 
